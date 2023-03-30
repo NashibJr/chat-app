@@ -67,3 +67,7 @@ body {
 .login-content form button:hover {
       box-shadow: 0 0 5px 0 #000;
 }
+.login-content form p span {
+      text-decoration: none;
+      color: #fff;
+}

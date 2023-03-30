@@ -50,7 +50,10 @@ const Signup = () => {
         </label>
         <button type="button">Signup</button>
         <p>
-          Have an account? <Link to="/">Login</Link>
+          Have an account?{" "}
+          <Link to="/">
+            <span>Login</span>
+          </Link>
         </p>
       </form>
     </div>

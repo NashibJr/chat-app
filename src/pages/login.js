@@ -39,7 +39,10 @@ const Login = () => {
         </label>
         <button type="button">Login</button>
         <p>
-          Don't have an account? <Link to="/signup">Signup</Link>
+          Don't have an account?{" "}
+          <Link to="/signup">
+            <span>Signup</span>
+          </Link>
         </p>
       </form>
     </div>
