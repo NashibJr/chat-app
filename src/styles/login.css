@@ -71,3 +71,8 @@ body {
       text-decoration: none;
       color: #fff;
 }
+.login-content form > span {
+      color: #f00;
+      margin-bottom: -10px;
+      margin-top: 10px;
+}
