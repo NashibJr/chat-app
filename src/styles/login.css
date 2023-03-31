@@ -1,0 +1,78 @@
+body {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: century gothic;
+}
+.login-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      margin: 20px;
+      background: none;
+      margin-top: 14vh;
+      width: 30%;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 0 20px 0 #000;
+      transform: translateX(95%);
+      flex-wrap: wrap;
+      background-image: url("C:\Users\Faith\Desktop\weather-app\src\images/login.jpg");
+}
+.login-content form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+}
+.login-content form img {
+      position: absolute;
+      margin: 0;
+      padding: 15px;
+      transform: translate(10px, 2px);
+}
+.login-content form input {
+      padding: 10px;
+      margin: 10px;
+      border: 1px solid #fff;
+      border-radius: 20px;
+      font-family: century gothic;
+      background: none;
+      outline: none;
+      width: 65%;
+      color: #fff;
+      font-size: 1.0em;
+      padding-left: 50px;
+      padding-right: 20px;
+}
+.login-content form input::placeholder {
+      color: #fff;
+}
+.login-content form button {
+      width: 60%;
+      background-color: dodgerblue;
+      font-size: 1em;
+      padding: 10px;
+      font-family: century gothic;
+      border-radius: 20px;
+      border: none;
+      font-weight: bold;
+}
+.login-content form button:hover {
+      box-shadow: 0 0 5px 0 #000;
+}
+.login-content form p span {
+      text-decoration: none;
+      color: #fff;
+}
+.login-content form > span {
+      color: #f00;
+      margin-bottom: -10px;
+      margin-top: 10px;
+}
