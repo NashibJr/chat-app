@@ -14,6 +14,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.users);
   const navigate = useNavigate();
+  const onSave = Boolean(state.email) && Boolean(state.password);
   useEffect(() => {
     if (userState.error === "") {
       navigate("/home");
@@ -58,6 +59,7 @@ const Login = () => {
               })
             );
           }}
+          disabled={!onSave}
         >
           Login
         </button>

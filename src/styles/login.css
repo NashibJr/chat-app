@@ -2,7 +2,6 @@ body {
       padding: 0;
       margin: 0;
       box-sizing: border-box;
-      background-image: url("C:\Users\Faith\Desktop\weather-app\src\images/login.jpg");
       font-family: century gothic;
 }
 .login-content {
@@ -20,6 +19,7 @@ body {
       box-shadow: 0 0 20px 0 #000;
       transform: translateX(95%);
       flex-wrap: wrap;
+      background-image: url("C:\Users\Faith\Desktop\weather-app\src\images/login.jpg");
 }
 .login-content form {
       display: flex;

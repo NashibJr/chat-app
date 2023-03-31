@@ -1,7 +1,14 @@
 import React from "react";
+import Links from "../components/links";
 
 const Home = () => {
-  return <h1>Hello world!1</h1>;
+  return (
+    <div>
+      <div>
+        <Links />
+      </div>
+    </div>
+  );
 };
 
 export default Home;
