@@ -5,10 +5,12 @@ import chats from "../images/chat.png";
 import logout from "../images/logout.png";
 import newchat from "../images/newchat.jpg";
 import home from "../images/home.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { handleLogout } from "../redux/users/usersSlice";
 
 const Links = () => {
   const ref = useRef();
+  const dispatch = useDispatch();
   const loggedInUser = useSelector((state) => state.users._loggedInUser);
   const navigate = useNavigate();
 
@@ -53,7 +55,7 @@ const Links = () => {
               </Link>
             </li>
           </span>
-          <li>
+          <li onClick={() => dispatch(handleLogout())}>
             <img src={logout} width="25px" height="25px" alt="" />
             <Link to="/" style={style}>
               Logout

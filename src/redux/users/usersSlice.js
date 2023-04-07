@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { users } from "../../components/dummy";
 
 const initialState = {
@@ -28,13 +28,24 @@ const usersSlice = createSlice({
       state.users = users;
     },
     handleChats: (state, action) => {
-      const loggedInUser = { ...state._loggedInUser, chats: [] };
-      loggedInUser.chats.push(action.payload);
+      if (state._loggedInUser.friends.includes(action.payload)) {
+        console.log(`${action.payload} is already in your chats.`);
+      } else {
+        state._loggedInUser.friends.push(action.payload);
+      }
+    },
+    handleLogout: (state, action) => {
+      state.error = null;
+      if (state.users.includes(state._loggedInUser)) {
+        state.users = state.users.concat([]);
+      } else {
+        state.users.push(state._loggedInUser);
+      }
     },
   },
 });
 
-export const { handleLogin, handleLoggedinUser, handleChats } =
+export const { handleLogin, handleLoggedinUser, handleChats, handleLogout } =
   usersSlice.actions;
 
 export default usersSlice;
