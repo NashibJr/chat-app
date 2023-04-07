@@ -8,18 +8,22 @@ import "../styles/login.css";
 
 const Login = () => {
   const [state, setState] = useState({ email: "", password: "" });
+
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.value });
   };
+
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.users);
   const navigate = useNavigate();
   const onSave = Boolean(state.email) && Boolean(state.password);
+
   useEffect(() => {
     if (userState.error === "") {
-      navigate("/home");
+      navigate(`/home/${userState._loggedInUser.id}`);
     }
   }, [userState.error, navigate]);
+
   return (
     <div className="login-content">
       <div>

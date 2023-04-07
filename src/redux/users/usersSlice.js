@@ -1,39 +1,9 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { users } from "../../components/dummy";
 
 const initialState = {
-  users: [
-    {
-      id: nanoid(),
-      username: "Maracus Rashford",
-      email: "marcusrashford@email.com",
-      password: "marcus@10",
-    },
-    {
-      id: nanoid(),
-      username: "Paul Pogba",
-      email: "paulpogbad@email.com",
-      password: "pogba@00006",
-    },
-    {
-      id: nanoid(),
-      username: "Bruno Fernandes",
-      email: "brunofernandes@email.com",
-      password: "bfernandes@_8",
-    },
-    {
-      id: nanoid(),
-      username: "David De Dea",
-      email: "daviddegea@email.com",
-      password: "daviddave@0001",
-    },
-    {
-      id: nanoid(),
-      username: "Jadon Sancho",
-      email: "jadonmaliksancho@email.com",
-      password: "@sanchooo10",
-    },
-  ],
-  _loggedInUser: [],
+  users: users,
+  _loggedInUser: {},
   error: null,
 };
 const usersSlice = createSlice({
@@ -57,9 +27,14 @@ const usersSlice = createSlice({
       const users = state.users.filter((user) => user.id !== id);
       state.users = users;
     },
+    handleChats: (state, action) => {
+      const loggedInUser = { ...state._loggedInUser, chats: [] };
+      loggedInUser.chats.push(action.payload);
+    },
   },
 });
 
-export const { handleLogin, handleLoggedinUser } = usersSlice.actions;
+export const { handleLogin, handleLoggedinUser, handleChats } =
+  usersSlice.actions;
 
 export default usersSlice;
