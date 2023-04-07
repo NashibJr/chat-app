@@ -1,18 +1,35 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Links from "../components/links";
 import User from "../components/user";
+import { handleLoggedinUser } from "../redux/users/usersSlice";
 import "../styles/newchats.css";
 
 const Newchats = () => {
-  const users = useSelector((state) => state.users.users).map((user) => (
-    <User user={user} key={user.id} />
-  ));
+  const state = useSelector((state) => state.users);
+  const loggedInUser = state._loggedInUser;
   const ref = useRef();
   const [userName, setUserName] = useState("");
+  const dispatch = useDispatch();
+  const [searchedUsers, setSearchedUsers] = useState([]);
+
+  const handleSearch = () => {
+    if (userName === "") {
+      setSearchedUsers([]);
+    } else {
+      const _searchedUsers = state.users.filter((user) =>
+        user.username.includes(userName)
+      );
+      setSearchedUsers(_searchedUsers);
+    }
+  };
+
   useEffect(() => {
     ref.current.style.height = `${window.innerHeight - 40}px`;
-  }, [ref]);
+    dispatch(handleLoggedinUser(loggedInUser.id));
+    handleSearch();
+  }, [ref, dispatch, loggedInUser.id, userName]);
+
   return (
     <div className="newchats-content">
       <div className="user-links" ref={ref}>
@@ -21,7 +38,11 @@ const Newchats = () => {
       <div className="new-chats">
         <div className="new-chats-first-child">
           <h2>Add new chats</h2>
-          <div className="users-content">{users}</div>
+          <div className="users-content">
+            {state.users.map((user) => (
+              <User user={user} key={user.id} />
+            ))}
+          </div>
         </div>
         <div className="user-search">
           <p>Search</p>
@@ -33,6 +54,11 @@ const Newchats = () => {
               onChange={(event) => setUserName(event.target.value)}
             />
           </form>
+          <div>
+            {searchedUsers?.map((user) => (
+              <User user={user} key={user.id} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

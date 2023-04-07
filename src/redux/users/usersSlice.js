@@ -32,73 +32,8 @@ const initialState = {
       email: "jadonmaliksancho@email.com",
       password: "@sanchooo10",
     },
-    {
-      id: nanoid(),
-      username: "Morgan Schneiderline",
-      email: "morgansch2@email.com",
-      password: "morgansch2",
-    },
-    {
-      id: nanoid(),
-      username: "Eddi Nketiah",
-      email: "eddinketiah@email.com",
-      password: "eddinketia14__",
-    },
-    {
-      id: nanoid(),
-      username: "Maracus Rashford",
-      email: "marcusrashford@email.com",
-      password: "marcus@10",
-    },
-    {
-      id: nanoid(),
-      username: "Maracus Rashford",
-      email: "marcusrashford@email.com",
-      password: "marcus@10",
-    },
-    {
-      id: nanoid(),
-      username: "Maracus Rashford",
-      email: "marcusrashford@email.com",
-      password: "marcus@10",
-    },
-    {
-      id: nanoid(),
-      username: "Maracus Rashford",
-      email: "marcusrashford@email.com",
-      password: "marcus@10",
-    },
-    {
-      id: nanoid(),
-      username: "Maracus Rashford",
-      email: "marcusrashford@email.com",
-      password: "marcus@10",
-    },
-    {
-      id: nanoid(),
-      username: "Maracus Rashford",
-      email: "marcusrashford@email.com",
-      password: "marcus@10",
-    },
-    {
-      id: nanoid(),
-      username: "Maracus Rashford",
-      email: "marcusrashford@email.com",
-      password: "marcus@10",
-    },
-    {
-      id: nanoid(),
-      username: "Maracus Rashfordmmmmmmmmmmmmm",
-      email: "marcusrashford@email.com",
-      password: "marcus@10",
-    },
-    {
-      id: nanoid(),
-      username: "Maracus Rashford",
-      email: "marcusrashford@email.com",
-      password: "marcus@10",
-    },
   ],
+  _loggedInUser: [],
   error: null,
 };
 const usersSlice = createSlice({
@@ -111,15 +46,20 @@ const usersSlice = createSlice({
         (user) => user.email === email && user.password === password
       );
       if (loggedInUser) {
-        state.users = loggedInUser;
+        state._loggedInUser = loggedInUser;
         state.error = "";
       } else {
         state.error = "Invalid username or password!";
       }
     },
+    handleLoggedinUser: (state, action) => {
+      const id = action.payload;
+      const users = state.users.filter((user) => user.id !== id);
+      state.users = users;
+    },
   },
 });
 
-export const { handleLogin } = usersSlice.actions;
+export const { handleLogin, handleLoggedinUser } = usersSlice.actions;
 
 export default usersSlice;
