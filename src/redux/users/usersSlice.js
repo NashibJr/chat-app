@@ -33,6 +33,7 @@ const initialState = {
       password: "@sanchooo10",
     },
   ],
+  _loggedInUser: [],
   error: null,
 };
 const usersSlice = createSlice({
@@ -45,15 +46,20 @@ const usersSlice = createSlice({
         (user) => user.email === email && user.password === password
       );
       if (loggedInUser) {
-        state.users = loggedInUser;
+        state._loggedInUser = loggedInUser;
         state.error = "";
       } else {
         state.error = "Invalid username or password!";
       }
     },
+    handleLoggedinUser: (state, action) => {
+      const id = action.payload;
+      const users = state.users.filter((user) => user.id !== id);
+      state.users = users;
+    },
   },
 });
 
-export const { handleLogin } = usersSlice.actions;
+export const { handleLogin, handleLoggedinUser } = usersSlice.actions;
 
 export default usersSlice;

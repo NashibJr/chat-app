@@ -19,7 +19,7 @@ const Login = () => {
     if (userState.error === "") {
       navigate("/home");
     }
-  }, [userState.error]);
+  }, [userState.error, navigate]);
   return (
     <div className="login-content">
       <div>
