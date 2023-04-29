@@ -4,7 +4,9 @@ import { useSelector } from "react-redux";
 const Search = ({ friends }) => {
   const [userName, setUserName] = useState("");
   const [searchedUsers, setSearchedUsers] = useState([]);
-  const friends_ = useSelector((state) => state.users._loggedInUser.friends);
+  const friends_ = useSelector(
+    (state) => state.users._loggedInUser.friends
+  ).map((friend) => friend.username);
 
   const handleSearch = () => {
     if (userName === "") {
@@ -13,6 +15,7 @@ const Search = ({ friends }) => {
       const _searchedUsers = friends.filter((friend) =>
         friend.includes(userName)
       );
+      console.log(friends_);
       setSearchedUsers(_searchedUsers);
     }
   };

@@ -28,10 +28,15 @@ const usersSlice = createSlice({
       state.users = users;
     },
     handleChats: (state, action) => {
-      if (state._loggedInUser.friends.includes(action.payload)) {
-        console.log(`${action.payload} is already in your chats.`);
+      const { username } = action.payload;
+      const user = state.users.find((user) => user.username.includes(username));
+      const isPresent = state._loggedInUser.friends.find((friend) =>
+        friend.username.includes(username)
+      );
+      if (isPresent) {
+        console.log(`${user} is already in your chats.`);
       } else {
-        state._loggedInUser.friends.push(action.payload);
+        state._loggedInUser.friends.push(user);
       }
     },
     handleLogout: (state, action) => {

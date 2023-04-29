@@ -10,7 +10,10 @@ const User = ({ user }) => {
       <p>{user.username}</p>
       <button
         type="button"
-        onClick={() => dispatch(handleChats(user.username))}
+        onClick={() => {
+          const { id, username } = user;
+          dispatch(handleChats({ id, username }));
+        }}
       >
         Chat
       </button>
