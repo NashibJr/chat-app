@@ -21,7 +21,7 @@ const Search = ({ friends }) => {
 
   useEffect(() => {
     handleSearch();
-  }, [userName]);
+  }, [userName, handleSearch]);
   return (
     <div className="user-search">
       <form>
