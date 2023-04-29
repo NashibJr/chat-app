@@ -14,11 +14,22 @@ const style = {
   cursor: "pointer",
 };
 
+const styles = {
+  padding: "0",
+  marginTop: "10px",
+  marginBottom: "-4vh",
+  display: "flex",
+  width: "200px",
+  flexWrap: "wrap",
+  marginRight: "20px",
+};
+
 const Links = () => {
   const ref = useRef();
   const dispatch = useDispatch();
   const loggedInUser = useSelector((state) => state.users._loggedInUser);
   const navigate = useNavigate();
+  const profileName = loggedInUser.username;
 
   const handleLogOut = () => {
     dispatch(handleLogout());
@@ -33,9 +44,13 @@ const Links = () => {
   }, [ref]);
   return (
     <div className="links-content">
-      <h1>
+      <h1 style={{ display: "flex", flexWrap: "wrap", width: "200px" }}>
         <em>yeChat</em>
       </h1>
+      <p style={styles}>
+        <strong>Loggedin as: </strong>
+        {profileName}
+      </p>
       <h2>{""}</h2>
       <div>
         <ul ref={ref}>

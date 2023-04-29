@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Search = ({ friends }) => {
   const [userName, setUserName] = useState("");
   const [searchedUsers, setSearchedUsers] = useState([]);
+  const navigate = useNavigate();
   const friends_ = useSelector(
     (state) => state.users._loggedInUser.friends
   ).map((friend) => friend.username);
@@ -46,6 +48,7 @@ const Search = ({ friends }) => {
               borderRadius: "20px",
               height: "30px",
             }}
+            onClick={() => navigate("/messages")}
           >
             {user}
           </p>

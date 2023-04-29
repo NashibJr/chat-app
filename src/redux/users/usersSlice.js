@@ -34,10 +34,13 @@ const usersSlice = createSlice({
         friend.username.includes(username)
       );
       if (isPresent) {
-        console.log(`${user} is already in your chats.`);
+        alert(`${user.username} is already in your chats`);
       } else {
         if (user.username !== "") {
           state._loggedInUser.friends.push(user);
+          alert(`${user.username} is successfully added to your chats`);
+        } else {
+          state.users.push(null);
         }
       }
     },
