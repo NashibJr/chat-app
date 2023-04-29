@@ -36,7 +36,9 @@ const usersSlice = createSlice({
       if (isPresent) {
         console.log(`${user} is already in your chats.`);
       } else {
-        state._loggedInUser.friends.push(user);
+        if (user.username !== "") {
+          state._loggedInUser.friends.push(user);
+        }
       }
     },
     handleLogout: (state, action) => {

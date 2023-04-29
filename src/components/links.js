@@ -1,19 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/links.css";
-import chats from "../images/chat.png";
-import logout from "../images/logout.png";
-import newchat from "../images/newchat.jpg";
 import home from "../images/home.png";
 import { useDispatch, useSelector } from "react-redux";
 import { handleLogout } from "../redux/users/usersSlice";
 import Lists from "./lists";
-
-const listValues = [
-  { route: "/chats", image: chats, label: "Chats" },
-  { route: "/newchats", image: newchat, label: "New Chats" },
-  { route: "/", image: logout, label: "Logout" },
-];
+import { listValues } from "./dummy";
 
 const style = {
   textDecoration: "none",

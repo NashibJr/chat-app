@@ -1,4 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
+import chats from "../images/chat.png";
+import logout from "../images/logout.png";
+import newchat from "../images/newchat.jpg";
 
 export const users = [
   {
@@ -36,4 +39,10 @@ export const users = [
     password: "@sanchooo10",
     friends: [],
   },
+];
+
+export const listValues = [
+  { route: "/chats", image: chats, label: "Chats" },
+  { route: "/newchats", image: newchat, label: "New Chats" },
+  { route: "/", image: logout, label: "Logout" },
 ];
