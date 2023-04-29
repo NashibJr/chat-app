@@ -1,0 +1,59 @@
+.messages-content {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      flex-direction: row;
+}
+.messages-content div:first-child {
+      width: 50%;
+}
+.messages {
+      background-color: #fafafa;
+      border-radius: 20px;
+      width: 40%;
+      margin: 0;
+      margin-top: 10px;
+      padding: 20px;
+      transform: translateX(-20%);
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+}
+.messages header {
+      position: fixed;
+      width: 90%;
+      /* background-color: #fafafa; */
+      margin-top: -15px;
+}
+.messages-content .messages footer {
+      margin-top: auto;
+}
+.messages-content .messages footer form input[type="text"] {
+      width: 50%;
+      padding: 5px;
+      font-size: 1em;
+      border: none;
+      outline: none;
+      border-bottom: 1px solid dodgerblue;
+      font-family: century gothic;
+      background-color: #fafafa;
+}
+.messages-content .messages footer form input[type="button"] {
+      width: 20%;
+      background-color: dodgerblue;
+      margin-left: 20px;
+      padding: 7px;
+      font-size: 1em;
+      font-family: century gothic;
+      border: none;
+      border-radius: 15px;
+      font-weight: bold;
+}
+.messages-content .messages footer form input[type="button"]:focus {
+      box-shadow: 0 0 7px 7px #000;
+}
+.messages-content .messages footer form input[type="text"]::placeholder {
+      color: #000;
+}
