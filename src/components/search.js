@@ -6,16 +6,14 @@ const Search = ({ friends }) => {
   const [userName, setUserName] = useState("");
   const [searchedUsers, setSearchedUsers] = useState([]);
   const navigate = useNavigate();
-  const friends_ = useSelector(
-    (state) => state.users._loggedInUser.friends
-  ).map((friend) => friend.username);
+  const friends_ = useSelector((state) => state.users._loggedInUser.friends);
 
   const handleSearch = () => {
     if (userName === "") {
       setSearchedUsers(friends_);
     } else {
       const _searchedUsers = friends.filter((friend) =>
-        friend.includes(userName)
+        friend.username.includes(userName)
       );
       console.log(friends_);
       setSearchedUsers(_searchedUsers);
@@ -39,7 +37,7 @@ const Search = ({ friends }) => {
       <div>
         {searchedUsers?.map((user) => (
           <p
-            key={user}
+            key={user.id}
             style={{
               width: "185%",
               padding: "10px",
@@ -48,9 +46,9 @@ const Search = ({ friends }) => {
               borderRadius: "20px",
               height: "30px",
             }}
-            onClick={() => navigate("/messages")}
+            onClick={() => navigate(`/messages/${user.id}`)}
           >
-            {user}
+            {user.username}
           </p>
         ))}
       </div>
