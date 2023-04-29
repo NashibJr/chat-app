@@ -1,57 +1,62 @@
 import React, { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/links.css";
-import chats from "../images/chat.png";
-import logout from "../images/logout.png";
-import newchat from "../images/newchat.jpg";
 import home from "../images/home.png";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { handleLogout } from "../redux/users/usersSlice";
+import Lists from "./lists";
+import { listValues } from "./dummy";
+
+const style = {
+  textDecoration: "none",
+  color: "#fff",
+  marginLeft: "7vh",
+  cursor: "pointer",
+};
 
 const Links = () => {
   const ref = useRef();
-  const user = useSelector((state) => state.users._loggedInUser);
+  const dispatch = useDispatch();
+  const loggedInUser = useSelector((state) => state.users._loggedInUser);
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    dispatch(handleLogout());
+  };
+
+  const handleNavigate = () => {
+    navigate(`/home/${loggedInUser.id}`);
+  };
+
   useEffect(() => {
     ref.current.style.height = `${window.innerHeight - 193}px`;
   }, [ref]);
-  const style = {
-    textDecoration: "none",
-    color: "#fff",
-    marginLeft: "7vh",
-  };
   return (
     <div className="links-content">
       <h1>
         <em>yeChat</em>
       </h1>
-      <h2>{user.username}</h2>
+      <h2>{""}</h2>
       <div>
         <ul ref={ref}>
           <span>
             <li>
               <img src={home} width="25px" height="25px" alt="" />
-              <Link to="/home" style={style}>
+              <div style={style} onClick={handleNavigate}>
                 Home
-              </Link>
-            </li>
-            <li>
-              <img src={chats} width="25px" height="25px" alt="" />
-              <Link to="/chats" style={style}>
-                Chats
-              </Link>
-            </li>
-            <li>
-              <img src={newchat} width="25px" height="25px" alt="" />
-              <Link to="/newchats" style={style}>
-                New Chats
-              </Link>
-            </li>
+              </div>
+            </li>{" "}
           </span>
-          <li>
-            <img src={logout} width="25px" height="25px" alt="" />
-            <Link to="/" style={style}>
-              Logout
-            </Link>
-          </li>
+          <span>
+            {listValues.map((listValue, index) => (
+              <Lists
+                values={listValue}
+                key={index}
+                index={index}
+                handleLogOut={handleLogOut}
+              />
+            ))}
+          </span>
         </ul>
       </div>
     </div>

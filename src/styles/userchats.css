@@ -1,0 +1,36 @@
+.user-chats {
+      display: flex;
+      padding: 20px;
+      margin: 20px;
+      width: 65%;
+      transform: translateX(-5%);
+      flex-wrap: wrap;
+}
+.user-chats tr {
+      display: flex;
+      flex-wrap: wrap;
+}
+.chats-display {
+      padding: 10px;
+      margin-right: 10px;
+      margin-top: -40px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 25%;
+}
+.chats-display h2 {
+      margin-bottom: -3vh;
+      margin-left: 10px;
+}
+.messages-content {
+      background-color: #fdfdff;
+      width: 60%;
+      margin-left: 20px;
+      padding: 10px;
+      border-radius: 20px;
+      box-sizing: 0 0 20px 0 #000;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+}
