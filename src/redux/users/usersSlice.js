@@ -36,11 +36,10 @@ const usersSlice = createSlice({
     },
     handleLogout: (state, action) => {
       state.error = null;
-      if (state.users.includes(state._loggedInUser)) {
-        state.users = state.users.concat([]);
-      } else {
+      if (!state.users.includes(state._loggedInUser)) {
         state.users.push(state._loggedInUser);
       }
+      state._loggedInUser = {};
     },
   },
 });

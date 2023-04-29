@@ -22,7 +22,7 @@ const Login = () => {
     if (userState.error === "") {
       navigate(`/home/${userState._loggedInUser.id}`);
     }
-  }, [userState.error, navigate]);
+  }, [userState.error, navigate, userState._loggedInUser.id]);
 
   return (
     <div className="login-content">

@@ -44,7 +44,7 @@ const Links = () => {
       <h1>
         <em>yeChat</em>
       </h1>
-      <h2></h2>
+      <h2>{""}</h2>
       <div>
         <ul ref={ref}>
           <span>
