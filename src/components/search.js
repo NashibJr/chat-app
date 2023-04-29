@@ -15,7 +15,6 @@ const Search = ({ friends }) => {
       const _searchedUsers = friends.filter((friend) =>
         friend.username.includes(userName)
       );
-      console.log(friends_);
       setSearchedUsers(_searchedUsers);
     }
   };
